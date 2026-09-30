@@ -1,6 +1,6 @@
 # Sol-Trader-X
 
-Autonomous AI trading for Solana.
+AI paper-trading pilot for Solana.
 
 **https://sol-trader-x.com**
 
