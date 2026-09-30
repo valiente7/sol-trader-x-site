@@ -16,3 +16,11 @@ This public repo holds the Sol-Trader-X website and live track record: one AI de
 | `status.json` | The latest result shown on the landing page. |
 | `assets/` | Logo. |
 | `CNAME` | Custom domain for the site. |
+
+## License
+
+**Track record data** (`history.json` and `status.json`) is licensed under [Creative Commons Attribution 4.0 (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/). You may copy, share and build on it, including commercially, as long as you credit "Sol-Trader-X (sol-trader-x.com)" and say if you changed it.
+
+Everything else in this repository (the website code, text and logo) is all rights reserved.
+
+The track record is published for information only. It is a paper-trading pilot and not investment advice.
