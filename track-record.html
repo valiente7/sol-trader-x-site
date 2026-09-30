@@ -177,7 +177,7 @@ footer .dim{font-size:12px}
 
   // Dependency-free SVG: each day is a segment from entry to close, marked by the decision.
   function chart(days) {
-    if (days.length < 3) { el('chartPanel').hidden = true; return; }
+    if (days.length < 2) { el('chartPanel').hidden = true; return; }
     el('chartPanel').hidden = false;
     var W = 1100, H = 320, L = 56, R = 20, T = 20, B = 40;
     var prices = []; days.forEach(function (d) { prices.push(d.entryPrice, d.exitPrice); });
