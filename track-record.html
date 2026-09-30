@@ -158,7 +158,8 @@ footer .dim{font-size:12px}
       stat('Paper P&amp;L', trades.length ? pct(pnl, true) : '0.00%', 'sum of one-day trades, before fees', pnl > 0 ? 'good' : pnl < 0 ? 'bad' : '') +
       stat('SOL, same sessions', pct(moves, true), 'sum of the daily price moves, for comparison', moves > 0 ? 'good' : moves < 0 ? 'bad' : '') +
       stat('Holds that avoided a loss', holds.length ? avoided + ' of ' + holds.length : '—', 'price fell on those days') +
-      stat('Average confidence', confs.length ? Math.round(sum(confs) / confs.length * 100) + '%' : '—', confs.length ? 'from Jev, over ' + confs.length + ' day' + (confs.length === 1 ? '' : 's') : 'not recorded yet');
+      stat('Average confidence', confs.length ? Math.round(sum(confs) / confs.length * 100) + '%' : '—',
+        confs.length ? 'from Jev, over ' + confs.length + ' day' + (confs.length === 1 ? '' : 's') + (typeof last.confidence === 'number' ? '<br>latest day (' + esc(last.date) + '): <b style="color:var(--text)">' + Math.round(last.confidence * 100) + '%</b>' : '') : 'not recorded yet');
 
     el('rows').innerHTML = days.slice().reverse().map(function (d) {
       var res = d.result || '—';
