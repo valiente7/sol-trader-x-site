@@ -44,7 +44,7 @@
     "note24h": "price rose 1.65%",
     "scored24hAt": "2026-09-30T12:35:47.781Z",
     "window24hNote": "entry time not recorded; window is approximate",
-    "provenanceNote": "entered from the run report; no matching line in the raw log"
+    "provenanceNote": "from run report, not in raw log"
   },
   {
     "date": "2026-09-30",
