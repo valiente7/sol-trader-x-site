@@ -44,5 +44,33 @@
     "note24h": "price rose 1.65%",
     "scored24hAt": "2026-09-30T12:35:47.781Z",
     "window24hNote": "entry time not recorded; window is approximate"
+  },
+  {
+    "date": "2026-09-30",
+    "entryPrice": 121.37,
+    "exitPrice": 117.42,
+    "changePct": -3.25,
+    "action": "hold",
+    "confidence": 0.53,
+    "probabilities": {
+      "buy": 0.27,
+      "hold": 0.6799999999999999,
+      "sell": 0.05
+    },
+    "result": "Correct",
+    "note": "Avoided −3.25% loss",
+    "pnlPct": 0,
+    "contextUsed": true,
+    "indicators": {
+      "change7dPct": 5.51,
+      "change30dPct": 17.81,
+      "sma20": 111.63,
+      "sma50": 101.28,
+      "rsi14": 65.9,
+      "volVs30dPct": -41.6
+    },
+    "priceSource": "kraken",
+    "decidedAt": "2026-09-30T12:35:47.781Z",
+    "scoredAt": "2026-09-30T20:03:53.549Z"
   }
 ]
