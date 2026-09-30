@@ -106,7 +106,7 @@ footer .dim{font-size:12px}
 
   <section class="note">
     <p><b>How to read this.</b> Jev is given the price plus the recent trend, moving averages, momentum and volume, and answers buy, sell or hold. A <b>HOLD</b> is scored by what the price did: "Correct" means the price fell, so holding avoided a loss; "No trade" means the price rose or was flat, so nothing is claimed. A buy or sell is scored win or loss on a one-day, one-SOL paper position, before fees. Confidence is the number Jev itself returns.</p>
-    <p style="margin-top:12px"><b>This is a research pilot with paper money, not investment advice.</b> Nothing here is a recommendation, and a short record says little about future results. The first days were recorded before confidence and the price source were stored, so they're marked "pilot start".</p>
+    <p style="margin-top:12px"><b>This is a research pilot with paper money, not investment advice.</b> Nothing here is a recommendation, and a short record says little about future results. The first days, marked "pilot start", were recorded before confidence and the price source were stored. Their prices fall within Kraken's real range for those days, but the source can't be confirmed.</p>
   </section>
 </main>
 
@@ -165,7 +165,7 @@ footer .dim{font-size:12px}
       var cls = res === 'Win' || res === 'Correct' ? 'good' : res === 'Loss' ? 'bad' : 'neutral';
       var conf = typeof d.confidence === 'number' ? Math.round(d.confidence * 100) + '%' : '<span class="dim" title="Not recorded for this early day">—</span>';
       var legacy = d.legacy ? ' <span class="dim" title="' + esc(d.note || '') + '">(pilot start)</span>' : '';
-      return '<tr><td class="mono">' + esc(d.date) + legacy + times(d) + '</td>' +
+      return '<tr><td class="mono">' + esc(d.date) + legacy + times(d) + (d.legacy && !d.priceSource ? '<div class="dim" style="font-size:11px;margin-top:2px">price source not recorded</div>' : '') + '</td>' +
         '<td class="num mono">' + money(d.entryPrice) + '</td><td class="num mono">' + money(d.exitPrice) + '</td>' +
         '<td class="num mono ' + (d.changePct < 0 ? 'bad' : d.changePct > 0 ? 'good' : 'neutral') + '">' + pct(d.changePct, true) + '</td>' +
         '<td>' + tag(d.action) + '</td><td class="num mono">' + conf + '</td>' +
