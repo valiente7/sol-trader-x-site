@@ -51,7 +51,7 @@ h1{font-size:clamp(32px,4.4vw,52px);font-weight:800;letter-spacing:-.02em;line-h
 table{width:100%;border-collapse:collapse;font-size:14px;min-width:640px}
 th .sub{display:block;text-transform:none;letter-spacing:0;font-size:11px;color:var(--dim);margin-top:3px}
 th{text-align:left;font-weight:400;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);padding:14px 14px;border-bottom:1px solid var(--line);white-space:nowrap}
-td{padding:14px 14px;border-bottom:1px solid #182436;white-space:normal;color:var(--text);vertical-align:top}
+td{padding:16px 14px;border-bottom:1px solid #182436;white-space:normal;color:var(--text);vertical-align:top}
 td span.mono,td .tag{white-space:nowrap}
 th .sub{white-space:normal}
 th:first-child,td:first-child{padding-left:24px}
@@ -157,8 +157,8 @@ footer .dim{font-size:12px}
 
       if (isPending) {
         return '<tr>' + day + '<td>' + tag(d.action) + '</td><td class="num mono">' + conf + fp + '</td>' +
-          '<td class="dim">Pending<div style="font-size:11px;margin-top:2px">scored at the next morning&rsquo;s entry</div></td>' +
-          '<td><span class="mono">' + money(d.entryPrice) + ' entry</span><div class="dim">Pending <span style="font-size:11px">\u00b7 scored at this evening&rsquo;s close</span></div></td></tr>';
+          '<td class="dim"><div style="font-weight:500">Pending</div><div style="font-size:12px;margin-top:2px">scored at the next morning&rsquo;s entry</div></td>' +
+          '<td><span class="mono">' + money(d.entryPrice) + ' entry</span><div class="dim" style="margin-top:6px;font-weight:500">Pending</div><div class="dim" style="margin-top:2px;font-size:12px">scored at this evening&rsquo;s close</div></td></tr>';
       }
 
       var c24;
@@ -168,15 +168,17 @@ footer .dim{font-size:12px}
         var win = d.window24hNote ? '<div class="dim" style="font-size:11px;margin-top:2px" title="' + esc(d.window24hNote) + '">window approximate</div>'
           : (typeof d.windowHours === 'number' ? '<div class="dim" style="font-size:11px;margin-top:2px">' + d.windowHours + ' h window</div>' : '');
         c24 = '<td><span class="mono">' + money(d.entryPrice) + ' \u2192 ' + money(d.nextEntryPrice) + '</span> <span class="mono ' + moveCls(d.move24hPct) + '">' + pct(d.move24hPct, true) + '</span>' +
-          '<div class="' + k24 + '">' + esc(r24) + ' <span class="dim">\u00b7 ' + esc(d.note24h || '') + '</span></div>' + win + '</td>';
+          '<div class="' + k24 + '" style="margin-top:6px;font-weight:500">' + esc(r24) + '</div>' +
+          '<div class="dim" style="margin-top:2px">' + esc(d.note24h || '') + '</div>' + win + '</td>';
       } else {
-        c24 = '<td class="dim">Pending<div style="font-size:11px;margin-top:2px">scored at the next morning&rsquo;s entry</div></td>';
+        c24 = '<td class="dim"><div style="font-weight:500">Pending</div><div style="font-size:12px;margin-top:2px">scored at the next morning&rsquo;s entry</div></td>';
       }
 
       var res = d.result || '\u2014';
       var cls = res === 'Win' || res === 'Correct' ? 'good' : res === 'Loss' ? 'bad' : 'neutral';
       var cs = '<td><span class="mono">' + money(d.entryPrice) + ' \u2192 ' + money(d.exitPrice) + '</span> <span class="mono ' + moveCls(d.changePct) + '">' + pct(d.changePct, true) + '</span>' +
-        '<div class="' + cls + '">' + esc(res) + ' <span class="dim">\u00b7 ' + esc((d.note || '').replace(/^SOL moved /, 'SOL ')) + '</span></div></td>';
+        '<div class="' + cls + '" style="margin-top:6px;font-weight:500">' + esc(res) + '</div>' +
+        '<div class="dim" style="margin-top:2px">' + esc((d.note || '').replace(/^SOL moved /, 'SOL ')) + '</div></td>';
 
       return '<tr>' + day + '<td>' + tag(d.action) + '</td><td class="num mono">' + conf + fp + '</td>' + c24 + cs + '</tr>';
     }).join('');
