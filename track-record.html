@@ -109,7 +109,7 @@ footer .dim{font-size:12px}
   </section>
 
   <section class="note">
-    <p><b>How to read this.</b> Jev is given the price plus the recent trend, moving averages, momentum and volume, and answers buy, sell or hold. Each day is scored two ways. The <b>24-hour result</b> (the first column) compares that morning&rsquo;s entry with the next morning&rsquo;s entry, so the overnight move counts; the newest day stays pending until the next morning. The <b>same-day result</b> compares the entry with that evening&rsquo;s close. For a HOLD, &ldquo;avoided a loss&rdquo; means the price fell and &ldquo;missed a gain&rdquo; means it rose. A buy or sell is scored win or loss on a one-SOL paper position, before fees. Confidence is the number Jev itself returns. The dashed line on the chart marks the move between one evening&rsquo;s close and the next morning&rsquo;s entry. <b>Each morning&rsquo;s decision is published here before the day&rsquo;s close,</b> as a row with no outcome yet. The evening only adds the outcome to that row, the publishing code refuses to change a decision once it is published, and any edit would show in the repository&rsquo;s history, which is protected against rewrites.</p>
+    <p><b>How to read this.</b> Jev is given the price plus the recent trend, moving averages, momentum and volume, and answers buy, sell or hold. Each day is scored two ways. The <b>24-hour result</b> (the first column) compares that morning&rsquo;s entry with the next morning&rsquo;s entry, so the overnight move counts; the newest day stays pending until the next morning. The <b>same-day result</b> compares the entry with that evening&rsquo;s close. For a HOLD, &ldquo;avoided a loss&rdquo; means the price fell and &ldquo;missed a gain&rdquo; means it rose. A buy or sell is scored win or loss on a one-SOL paper position, before fees. Confidence is the number Jev itself returns. The dashed line on the chart marks the move between one evening&rsquo;s close and the next morning&rsquo;s entry. <b>Each morning&rsquo;s decision is published here before the day&rsquo;s close,</b> as a row with no outcome yet. The evening only adds the outcome to that row, the publishing code refuses to change a decision once it is published, and any edit would show in the repository&rsquo;s history, which is protected against rewrites. New decisions also record the Jev model version and a SHA-256 fingerprint of Jev&rsquo;s raw answer (the small text under the confidence), so the private record can be checked against what was published.</p>
     <p style="margin-top:12px"><b>This is a research pilot with paper money, not investment advice.</b> Nothing here is a recommendation, and a short record says little about future results. The first days, marked "pilot start", were recorded before confidence and the price source were stored. Their prices fall within Kraken's real range for those days, but the source can't be confirmed.</p>
   </section>
 </main>
@@ -147,11 +147,12 @@ footer .dim{font-size:12px}
       var legacy = d.legacy ? ' <span class="dim" title="' + esc(d.note || '') + '">(pilot start)</span>' : '';
       var isPending = typeof d.exitPrice !== 'number';
       var decided = isPending && hm(d.decidedAt) ? '<div class="dim" style="font-size:11px;margin-top:2px" title="The decision was published before the close (UTC)">decided ' + hm(d.decidedAt) + ' UTC, before the close</div>' : '';
+      var fp = d.jevResponseSha256 ? '<div class="dim" style="font-size:11px;margin-top:2px" title="Jev model ' + esc(d.jevModel || '') + '. SHA-256 of Jev&rsquo;s raw answer: ' + esc(d.jevResponseSha256) + '">' + esc(d.jevModel || 'jev') + ' \u00b7 #' + esc(d.jevResponseSha256.slice(0, 8)) + '</div>' : '';
       var prov = d.provenanceNote ? '<div class="dim" style="font-size:11px;margin-top:2px">' + esc(d.provenanceNote) + '</div>' : '';
       var day = '<td class="mono">' + esc(d.date) + legacy + (isPending ? decided : times(d)) + (d.legacy && !d.priceSource ? '<div class="dim" style="font-size:11px;margin-top:2px">price source not recorded</div>' : '') + prov + '</td>';
 
       if (isPending) {
-        return '<tr>' + day + '<td>' + tag(d.action) + '</td><td class="num mono">' + conf + '</td>' +
+        return '<tr>' + day + '<td>' + tag(d.action) + '</td><td class="num mono">' + conf + fp + '</td>' +
           '<td class="dim">Pending<div style="font-size:11px;margin-top:2px">scored at the next morning&rsquo;s entry</div></td>' +
           '<td><span class="mono">' + money(d.entryPrice) + ' entry</span><div class="dim">Pending <span style="font-size:11px">\u00b7 scored at this evening&rsquo;s close</span></div></td></tr>';
       }
@@ -173,7 +174,7 @@ footer .dim{font-size:12px}
       var cs = '<td><span class="mono">' + money(d.entryPrice) + ' \u2192 ' + money(d.exitPrice) + '</span> <span class="mono ' + moveCls(d.changePct) + '">' + pct(d.changePct, true) + '</span>' +
         '<div class="' + cls + '">' + esc(res) + ' <span class="dim">\u00b7 ' + esc((d.note || '').replace(/^SOL moved /, 'SOL ')) + '</span></div></td>';
 
-      return '<tr>' + day + '<td>' + tag(d.action) + '</td><td class="num mono">' + conf + '</td>' + c24 + cs + '</tr>';
+      return '<tr>' + day + '<td>' + tag(d.action) + '</td><td class="num mono">' + conf + fp + '</td>' + c24 + cs + '</tr>';
     }).join('');
   }
 
