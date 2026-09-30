@@ -13,7 +13,14 @@
     "contextUsed": false,
     "indicators": null,
     "priceSource": null,
-    "legacy": true
+    "legacy": true,
+    "nextEntryDate": "2026-09-29",
+    "nextEntryPrice": 119.4,
+    "move24hPct": -0.26,
+    "result24h": "Avoided a loss",
+    "note24h": "price fell 0.26%",
+    "scored24hAt": null,
+    "window24hNote": "entry time not recorded; window is approximate"
   },
   {
     "date": "2026-09-29",
@@ -29,6 +36,13 @@
     "contextUsed": false,
     "indicators": null,
     "priceSource": null,
-    "legacy": true
+    "legacy": true,
+    "nextEntryDate": "2026-09-30",
+    "nextEntryPrice": 121.37,
+    "move24hPct": 1.65,
+    "result24h": "Missed a gain",
+    "note24h": "price rose 1.65%",
+    "scored24hAt": "2026-09-30T12:35:47.781Z",
+    "window24hNote": "entry time not recorded; window is approximate"
   }
 ]
