@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Track record — Sol-Trader-X</title>
+<meta name="description" content="Every daily decision by the Sol-Trader-X paper-trading pilot, scored against actual SOL prices. Nothing is overwritten.">
+<link rel="icon" href="assets/sol-trader-x-logo.jpeg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0b121c;--panel:#111b28;--line:#1f2d40;--text:#e3e8ee;--muted:#a9b6c4;--dim:#7f8ea0;--green:#3ff0a4;--violet:#a47bff;--blue:#2aa8ff;--red:#ff6b7a}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Sora',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--green);text-decoration:none}
+a:hover{color:var(--violet)}
+.mono{font-family:'JetBrains Mono',monospace}
+.page{min-height:100vh;background:radial-gradient(1200px 700px at 70% -10%,#16233a 0%,#0b121c 60%);overflow-x:hidden}
+.wrap{max-width:1200px;margin:0 auto;padding-left:24px;padding-right:24px}
+header{position:sticky;top:0;z-index:50;background:rgba(11,18,28,.82);backdrop-filter:blur(12px);border-bottom:1px solid #1c2a3c}
+header .wrap{padding-top:14px;padding-bottom:14px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px;color:var(--text)}
+.brand:hover{color:var(--text)}
+.mark{border-radius:50%;background-image:url('assets/sol-trader-x-logo.jpeg');background-size:340%;background-position:48.3% 44.2%;width:40px;height:40px;box-shadow:0 0 18px rgba(63,240,164,.35),0 0 0 1px #24344a}
+.wordmark{font-weight:800;letter-spacing:.02em;font-size:18px}
+.wordmark span{color:var(--blue)}
+nav{display:flex;gap:28px;flex-wrap:wrap;font-size:13px}
+nav a{color:#b6c2cf}
+nav a:hover,nav a[aria-current]{color:var(--green)}
+main{padding-top:56px;padding-bottom:40px;display:flex;flex-direction:column;gap:40px}
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--green)}
+h1{font-size:clamp(32px,4.4vw,52px);font-weight:800;letter-spacing:-.02em;line-height:1.08;margin-top:12px}
+.lede{font-size:17px;line-height:1.6;color:var(--muted);max-width:720px;margin-top:16px;text-wrap:pretty}
+.asof{font-size:12px;color:var(--dim);margin-top:14px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.stat{background:var(--panel);padding:24px;display:flex;flex-direction:column;gap:8px}
+.stat .k{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+.stat .v{font-size:28px;font-weight:700}
+.stat .s{font-size:13px;color:var(--muted);line-height:1.45}
+.panel{border:1px solid var(--line);border-radius:12px;background:rgba(18,28,41,.7);overflow:hidden}
+.panel-head{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:16px 24px;border-bottom:1px solid var(--line);font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+.panel-head span{color:var(--dim);letter-spacing:0;text-transform:none}
+.chart{padding:16px 16px 8px}
+.chart svg{width:100%;height:auto;display:block}
+.legend{display:flex;gap:20px;flex-wrap:wrap;padding:0 24px 16px;font-size:12px;color:var(--muted)}
+.scroll{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:14px;min-width:680px}
+th{text-align:left;font-weight:400;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);padding:14px 24px;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:14px 24px;border-bottom:1px solid #182436;white-space:nowrap;color:var(--text)}
+tr:last-child td{border-bottom:none}
+td.num{text-align:right}th.num{text-align:right}
+.tag{display:inline-block;padding:3px 10px;border-radius:999px;font-size:12px;border:1px solid var(--line)}
+.tag.hold{color:var(--violet);border-color:rgba(164,123,255,.4)}
+.tag.buy{color:var(--green);border-color:rgba(63,240,164,.4)}
+.tag.sell{color:var(--red);border-color:rgba(255,107,122,.4)}
+.good{color:var(--green)}.bad{color:var(--red)}.neutral{color:var(--muted)}
+.dim{color:var(--dim)}
+.note{font-size:14px;line-height:1.65;color:var(--muted);max-width:820px}
+.note b{color:var(--text);font-weight:600}
+.empty{padding:40px 24px;color:var(--muted);text-align:center;font-size:15px}
+footer{border-top:1px solid #1c2a3c;background:rgba(8,14,22,.9)}
+footer .wrap{padding-top:32px;padding-bottom:32px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;font-size:13px}
+footer .dim{font-size:12px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="page">
+<header>
+  <div class="wrap">
+    <a class="brand" href="./"><div class="mark" role="img" aria-label="Sol-Trader-X logo"></div><div class="wordmark">SOL-TRADER-<span>X</span></div></a>
+    <nav class="mono" aria-label="Primary">
+      <a href="./#features">Features</a>
+      <a href="./#status">Status</a>
+      <a href="track-record.html" aria-current="page">Track record</a>
+      <a href="./#tech">Technology</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section>
+    <div class="eyebrow mono">Paper-trading pilot</div>
+    <h1>Every day, on the record.</h1>
+    <p class="lede">Each row is one day's decision by Jev, recorded before the close and scored against the actual SOL price afterwards. Days are only ever added. Earlier rows are never changed or removed, including the ones that didn't go well.</p>
+    <p class="asof mono" id="asof" aria-live="polite">Loading the record…</p>
+  </section>
+
+  <section aria-label="Summary"><div class="stats" id="stats"></div></section>
+
+  <section class="panel" id="chartPanel" hidden>
+    <div class="panel-head mono"><b style="font-weight:400">SOL price, entry to close</b><span>one segment per day</span></div>
+    <div class="chart" id="chart"></div>
+    <div class="legend mono" id="legend"></div>
+  </section>
+
+  <section class="panel">
+    <div class="panel-head mono"><b style="font-weight:400">Daily log</b><span><a href="history.json">history.json ↗</a></span></div>
+    <div class="scroll"><table>
+      <thead><tr><th>Date</th><th class="num">Entry</th><th class="num">Close</th><th class="num">Move</th><th>Decision</th><th class="num">Confidence</th><th>Result</th></tr></thead>
+      <tbody id="rows"></tbody>
+    </table></div>
+    <div class="empty" id="empty" hidden>The first results will appear here after the next scored day.</div>
+  </section>
+
+  <section class="note">
+    <p><b>How to read this.</b> Jev is given the price plus the recent trend, moving averages, momentum and volume, and answers buy, sell or hold. A <b>HOLD</b> is scored by what the price did: "Correct" means the price fell, so holding avoided a loss; "No trade" means the price rose or was flat, so nothing is claimed. A buy or sell is scored win or loss on a one-day, one-SOL paper position, before fees. Confidence is the number Jev itself returns.</p>
+    <p style="margin-top:12px"><b>This is a research pilot with paper money, not investment advice.</b> Nothing here is a recommendation, and a short record says little about future results. The first days were recorded before confidence and the price source were stored, so they're marked "pilot start".</p>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="dim mono">Sol-Trader-X · Autonomous AI trading for Solana · sol-trader-x.com</div>
+    <div class="mono"><a href="./">← Back to the site</a></div>
+  </div>
+</footer>
+</div>
+
+<script>
+(function () {
+  var MINUS = '−';
+  function el(id) { return document.getElementById(id); }
+  function money(n) { return '$' + Number(n).toFixed(2); }
+  function pct(n, plus) { if (n == null || isNaN(n)) return '—'; var v = Number(n); return (v < 0 ? MINUS : (plus ? '+' : '')) + Math.abs(v).toFixed(2) + '%'; }
+  function sum(a) { return a.reduce(function (s, x) { return s + x; }, 0); }
+  function tag(a) { a = String(a || '').toLowerCase(); return '<span class="tag ' + a + '">' + a.toUpperCase() + '</span>'; }
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+
+  function stat(k, v, s, cls) {
+    return '<div class="stat"><div class="k mono">' + k + '</div><div class="v mono ' + (cls || '') + '">' + v + '</div><div class="s">' + s + '</div></div>';
+  }
+
+  function render(days) {
+    days = days.slice().sort(function (a, b) { return a.date < b.date ? -1 : 1; });
+    var n = days.length;
+    if (!n) { el('empty').hidden = false; el('asof').textContent = 'No days recorded yet.'; el('stats').innerHTML = ''; return; }
+    var last = days[n - 1];
+    el('asof').textContent = n + ' day' + (n === 1 ? '' : 's') + ' recorded · latest ' + last.date;
+
+    var holds = days.filter(function (d) { return d.action === 'hold'; });
+    var buys = days.filter(function (d) { return d.action === 'buy'; }).length;
+    var sells = days.filter(function (d) { return d.action === 'sell'; }).length;
+    var trades = days.filter(function (d) { return d.action === 'buy' || d.action === 'sell'; });
+    var wins = trades.filter(function (d) { return d.result === 'Win'; }).length;
+    var avoided = holds.filter(function (d) { return d.result === 'Correct'; }).length;
+    var confs = days.map(function (d) { return d.confidence; }).filter(function (c) { return typeof c === 'number'; });
+    var pnl = sum(trades.map(function (d) { return d.pnlPct || 0; }));
+    var moves = sum(days.map(function (d) { return d.changePct || 0; }));
+
+    el('stats').innerHTML =
+      stat('Days recorded', n, holds.length + ' hold' + (holds.length === 1 ? '' : 's') + ', ' + buys + ' buy' + (buys === 1 ? '' : 's') + ', ' + sells + ' sell' + (sells === 1 ? '' : 's')) +
+      stat('Trades taken', trades.length, trades.length ? wins + ' win' + (wins === 1 ? '' : 's') + ', ' + (trades.length - wins) + ' loss' + (trades.length - wins === 1 ? '' : 'es') : 'Jev has held every day so far') +
+      stat('Paper P&amp;L', trades.length ? pct(pnl, true) : '0.00%', 'sum of one-day trades, before fees', pnl > 0 ? 'good' : pnl < 0 ? 'bad' : '') +
+      stat('SOL, same sessions', pct(moves, true), 'sum of the daily price moves, for comparison', moves > 0 ? 'good' : moves < 0 ? 'bad' : '') +
+      stat('Holds that avoided a loss', holds.length ? avoided + ' of ' + holds.length : '—', 'price fell on those days') +
+      stat('Average confidence', confs.length ? Math.round(sum(confs) / confs.length * 100) + '%' : '—', confs.length ? 'from Jev, over ' + confs.length + ' day' + (confs.length === 1 ? '' : 's') : 'not recorded yet');
+
+    el('rows').innerHTML = days.slice().reverse().map(function (d) {
+      var res = d.result || '—';
+      var cls = res === 'Win' || res === 'Correct' ? 'good' : res === 'Loss' ? 'bad' : 'neutral';
+      var conf = typeof d.confidence === 'number' ? Math.round(d.confidence * 100) + '%' : '<span class="dim" title="Not recorded for this early day">—</span>';
+      var legacy = d.legacy ? ' <span class="dim" title="' + esc(d.note || '') + '">(pilot start)</span>' : '';
+      return '<tr><td class="mono">' + esc(d.date) + legacy + '</td>' +
+        '<td class="num mono">' + money(d.entryPrice) + '</td><td class="num mono">' + money(d.exitPrice) + '</td>' +
+        '<td class="num mono ' + (d.changePct < 0 ? 'bad' : d.changePct > 0 ? 'good' : 'neutral') + '">' + pct(d.changePct, true) + '</td>' +
+        '<td>' + tag(d.action) + '</td><td class="num mono">' + conf + '</td>' +
+        '<td class="' + cls + '">' + esc(res) + ' <span class="dim">· ' + esc((d.note || '').replace(/^SOL moved /, 'SOL ')) + '</span></td></tr>';
+    }).join('');
+
+    chart(days);
+  }
+
+  // Dependency-free SVG: each day is a segment from entry to close, marked by the decision.
+  function chart(days) {
+    if (days.length < 3) { el('chartPanel').hidden = true; return; }
+    el('chartPanel').hidden = false;
+    var W = 1100, H = 320, L = 56, R = 20, T = 20, B = 40;
+    var prices = []; days.forEach(function (d) { prices.push(d.entryPrice, d.exitPrice); });
+    var lo = Math.min.apply(null, prices), hi = Math.max.apply(null, prices), pad = (hi - lo) * 0.15 || 1;
+    lo -= pad; hi += pad;
+    function x(i) { return L + (days.length === 1 ? 0 : i * (W - L - R) / (days.length - 1)); }
+    function y(p) { return T + (hi - p) * (H - T - B) / (hi - lo); }
+    var g = '';
+    for (var t = 0; t <= 4; t++) {
+      var pv = lo + (hi - lo) * t / 4, py = y(pv);
+      g += '<line x1="' + L + '" x2="' + (W - R) + '" y1="' + py + '" y2="' + py + '" stroke="#1f2d40"/><text x="' + (L - 8) + '" y="' + (py + 4) + '" text-anchor="end" font-size="11" fill="#7f8ea0" font-family="JetBrains Mono,monospace">$' + pv.toFixed(0) + '</text>';
+    }
+    var path = days.map(function (d, i) { return (i ? 'L' : 'M') + x(i) + ' ' + y(d.exitPrice); }).join(' ');
+    g += '<path d="' + path + '" fill="none" stroke="#2c3d53" stroke-width="1.5"/>';
+    var col = { hold: '#a47bff', buy: '#3ff0a4', sell: '#ff6b7a' };
+    days.forEach(function (d, i) {
+      var c = col[d.action] || '#a9b6c4', cx = x(i);
+      g += '<line x1="' + cx + '" x2="' + cx + '" y1="' + y(d.entryPrice) + '" y2="' + y(d.exitPrice) + '" stroke="' + c + '" stroke-width="3" stroke-linecap="round"><title>' + esc(d.date) + ': ' + money(d.entryPrice) + ' to ' + money(d.exitPrice) + ' (' + d.action.toUpperCase() + ')</title></line>';
+      g += '<circle cx="' + cx + '" cy="' + y(d.entryPrice) + '" r="4" fill="#0b121c" stroke="' + c + '" stroke-width="2"/><circle cx="' + cx + '" cy="' + y(d.exitPrice) + '" r="4" fill="' + c + '"/>';
+      if (days.length <= 16 || i % Math.ceil(days.length / 12) === 0) g += '<text x="' + cx + '" y="' + (H - 14) + '" text-anchor="middle" font-size="11" fill="#7f8ea0" font-family="JetBrains Mono,monospace">' + d.date.slice(5) + '</text>';
+    });
+    el('chart').innerHTML = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="SOL entry and closing price for each recorded day, coloured by decision">' + g + '</svg>';
+    el('legend').innerHTML = '<span><span style="color:#a47bff">●</span> Hold</span><span><span style="color:#3ff0a4">●</span> Buy</span><span><span style="color:#ff6b7a">●</span> Sell</span><span>Hollow dot = entry, filled dot = close</span>';
+  }
+
+  fetch('history.json', { cache: 'no-store' })
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(function (d) { render(Array.isArray(d) ? d : []); })
+    .catch(function () { el('asof').textContent = 'The record could not be loaded right now. Please try again shortly.'; el('empty').hidden = false; });
+})();
+</script>
+</body>
+</html>
