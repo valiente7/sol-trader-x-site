@@ -48,7 +48,8 @@ h1{font-size:clamp(32px,4.4vw,52px);font-weight:800;letter-spacing:-.02em;line-h
 .chart svg{width:100%;height:auto;display:block}
 .legend{display:flex;gap:20px;flex-wrap:wrap;padding:0 24px 16px;font-size:12px;color:var(--muted)}
 .scroll{overflow-x:auto}
-table{width:100%;border-collapse:collapse;font-size:14px;min-width:680px}
+table{width:100%;border-collapse:collapse;font-size:14px;min-width:880px}
+th .sub{display:block;text-transform:none;letter-spacing:0;font-size:11px;color:var(--dim);margin-top:3px}
 th{text-align:left;font-weight:400;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);padding:14px 24px;border-bottom:1px solid var(--line);white-space:nowrap}
 td{padding:14px 24px;border-bottom:1px solid #182436;white-space:nowrap;color:var(--text)}
 tr:last-child td{border-bottom:none}
@@ -86,7 +87,7 @@ footer .dim{font-size:12px}
   <section>
     <div class="eyebrow mono">Paper-trading pilot</div>
     <h1>Every day, on the record.</h1>
-    <p class="lede">Each row is one day's decision by Jev, recorded in the morning and scored against the actual SOL price that evening (UTC). Earlier days are never changed or removed, including the ones that didn't go well. A re-run on the same day corrects only that day's row.</p>
+    <p class="lede">Each row is one day's decision by Jev, recorded in the morning and scored two ways: over 24 hours, against the next morning&rsquo;s entry, and within the day, against that evening&rsquo;s close (UTC). Earlier days are never changed or removed, including the ones that didn't go well. A re-run on the same day corrects only that day's row.</p>
     <p class="asof mono" id="asof" aria-live="polite">Loading the record…</p>
   </section>
 
@@ -101,14 +102,14 @@ footer .dim{font-size:12px}
   <section class="panel">
     <div class="panel-head mono"><b style="font-weight:400">Daily log</b><span><a href="history.json">history.json ↗</a></span></div>
     <div class="scroll"><table>
-      <thead><tr><th>Date</th><th class="num">Entry</th><th class="num">Close</th><th class="num">Move</th><th>Decision</th><th class="num">Confidence</th><th>Result</th></tr></thead>
+      <thead><tr><th>Date</th><th>Decision</th><th class="num">Confidence</th><th>24-hour result<span class="sub">entry to next morning&rsquo;s entry</span></th><th>Same-day result<span class="sub">entry to that evening&rsquo;s close</span></th></tr></thead>
       <tbody id="rows"></tbody>
     </table></div>
     <div class="empty" id="empty" hidden>The first results will appear here after the next scored day.</div>
   </section>
 
   <section class="note">
-    <p><b>How to read this.</b> Jev is given the price plus the recent trend, moving averages, momentum and volume, and answers buy, sell or hold. A <b>HOLD</b> is scored by what the price did: "Correct" means the price fell, so holding avoided a loss; "No trade" means the price rose or was flat, so nothing is claimed. A buy or sell is scored win or loss on a one-day, one-SOL paper position, before fees. Confidence is the number Jev itself returns. <b>Every result compares that morning's decision with that evening's close.</b> The move between one evening's close and the next morning's entry is not scored; the dashed line on the chart shows it.</p>
+    <p><b>How to read this.</b> Jev is given the price plus the recent trend, moving averages, momentum and volume, and answers buy, sell or hold. Each day is scored two ways. The <b>24-hour result</b> (the first column) compares that morning&rsquo;s entry with the next morning&rsquo;s entry, so the overnight move counts; the newest day stays pending until the next morning. The <b>same-day result</b> compares the entry with that evening&rsquo;s close. For a HOLD, &ldquo;avoided a loss&rdquo; means the price fell and &ldquo;missed a gain&rdquo; means it rose. A buy or sell is scored win or loss on a one-SOL paper position, before fees. Confidence is the number Jev itself returns. The dashed line on the chart marks the move between one evening&rsquo;s close and the next morning&rsquo;s entry.</p>
     <p style="margin-top:12px"><b>This is a research pilot with paper money, not investment advice.</b> Nothing here is a recommendation, and a short record says little about future results. The first days, marked "pilot start", were recorded before confidence and the price source were stored. Their prices fall within Kraken's real range for those days, but the source can't be confirmed.</p>
   </section>
 </main>
@@ -156,25 +157,52 @@ footer .dim{font-size:12px}
     var moves = sum(days.map(function (d) { return d.changePct || 0; }));
     var bh = (last.exitPrice / days[0].entryPrice - 1) * 100;
 
+    // 24-hour view: entry to the next morning's entry (the overnight move counts)
+    var scored = days.filter(function (d) { return typeof d.move24hPct === 'number'; });
+    var holds24 = scored.filter(function (d) { return d.action === 'hold'; });
+    var avoided24 = holds24.filter(function (d) { return d.result24h === 'Avoided a loss'; }).length;
+    var missed24 = holds24.filter(function (d) { return d.result24h === 'Missed a gain'; }).length;
+    var trades24 = scored.filter(function (d) { return d.action === 'buy' || d.action === 'sell'; });
+    var pnl24 = sum(trades24.map(function (d) { return d.action === 'buy' ? d.move24hPct : -d.move24hPct; }));
+    var chain = scored.length ? (scored[scored.length - 1].nextEntryPrice / days[0].entryPrice - 1) * 100 : null;
+    var bhMain = chain != null ? chain : bh;
+
     el('stats').innerHTML =
-      stat('Days recorded', n, holds.length + ' hold' + (holds.length === 1 ? '' : 's') + ', ' + buys + ' buy' + (buys === 1 ? '' : 's') + ', ' + sells + ' sell' + (sells === 1 ? '' : 's')) +
+      stat('Days recorded', n, holds.length + ' hold' + (holds.length === 1 ? '' : 's') + ', ' + buys + ' buy' + (buys === 1 ? '' : 's') + ', ' + sells + ' sell' + (sells === 1 ? '' : 's') + '<br>' + scored.length + ' scored over 24 hours') +
+      stat('Holds that avoided a loss', holds24.length ? avoided24 + ' of ' + holds24.length : '—',
+        '24-hour view' + (missed24 ? ' · ' + missed24 + ' missed a gain' : '') + '<br>same-day view: ' + (holds.length ? avoided + ' of ' + holds.length : '—')) +
       stat('Trades taken', trades.length, trades.length ? wins + ' win' + (wins === 1 ? '' : 's') + ', ' + (trades.length - wins) + ' loss' + (trades.length - wins === 1 ? '' : 'es') : 'Jev has held every day so far') +
-      stat('Paper P&amp;L', trades.length ? pct(pnl, true) : '0.00%', 'sum of one-day trades, before fees', pnl > 0 ? 'good' : pnl < 0 ? 'bad' : '') +
-      stat('SOL, buy and hold', pct(bh, true), 'first entry to latest close, overnight moves included<br>scored sessions only: ' + pct(moves, true), bh > 0 ? 'good' : bh < 0 ? 'bad' : '') +
-      stat('Holds that avoided a loss', holds.length ? avoided + ' of ' + holds.length : '—', 'price fell on those days') +
+      stat('Paper P&amp;L', trades24.length ? pct(pnl24, true) : (trades.length ? pct(pnl, true) : '0.00%'),
+        trades.length ? '24-hour trades, before fees<br>same-day: ' + pct(pnl, true) : 'no trades taken yet', (trades24.length ? pnl24 : pnl) > 0 ? 'good' : (trades24.length ? pnl24 : pnl) < 0 ? 'bad' : '') +
+      stat('SOL, buy and hold', pct(bhMain, true),
+        (chain != null ? 'first entry to latest scored entry (24-hour windows)<br>to the latest close: ' : 'first entry to latest close<br>') + (chain != null ? pct(bh, true) + ' · ' : '') + 'sessions only: ' + pct(moves, true), bhMain > 0 ? 'good' : bhMain < 0 ? 'bad' : '') +
       stat('Average confidence', confs.length ? Math.round(sum(confs) / confs.length * 100) + '%' : '—',
         confs.length ? 'from Jev, over ' + confs.length + ' day' + (confs.length === 1 ? '' : 's') + (typeof last.confidence === 'number' ? '<br>latest day (' + esc(last.date) + '): <b style="color:var(--text)">' + Math.round(last.confidence * 100) + '%</b>' : '') : 'not recorded yet');
 
+    function moveCls(v) { return v < 0 ? 'bad' : v > 0 ? 'good' : 'neutral'; }
     el('rows').innerHTML = days.slice().reverse().map(function (d) {
-      var res = d.result || '—';
-      var cls = res === 'Win' || res === 'Correct' ? 'good' : res === 'Loss' ? 'bad' : 'neutral';
       var conf = typeof d.confidence === 'number' ? Math.round(d.confidence * 100) + '%' : '<span class="dim" title="Not recorded for this early day">—</span>';
       var legacy = d.legacy ? ' <span class="dim" title="' + esc(d.note || '') + '">(pilot start)</span>' : '';
-      return '<tr><td class="mono">' + esc(d.date) + legacy + times(d) + (d.legacy && !d.priceSource ? '<div class="dim" style="font-size:11px;margin-top:2px">price source not recorded</div>' : '') + '</td>' +
-        '<td class="num mono">' + money(d.entryPrice) + '</td><td class="num mono">' + money(d.exitPrice) + '</td>' +
-        '<td class="num mono ' + (d.changePct < 0 ? 'bad' : d.changePct > 0 ? 'good' : 'neutral') + '">' + pct(d.changePct, true) + '</td>' +
-        '<td>' + tag(d.action) + '</td><td class="num mono">' + conf + '</td>' +
-        '<td class="' + cls + '">' + esc(res) + ' <span class="dim">· ' + esc((d.note || '').replace(/^SOL moved /, 'SOL ')) + '</span></td></tr>';
+      var day = '<td class="mono">' + esc(d.date) + legacy + times(d) + (d.legacy && !d.priceSource ? '<div class="dim" style="font-size:11px;margin-top:2px">price source not recorded</div>' : '') + '</td>';
+
+      var c24;
+      if (typeof d.move24hPct === 'number') {
+        var r24 = d.result24h || '—';
+        var k24 = r24 === 'Win' || r24 === 'Avoided a loss' ? 'good' : r24 === 'Loss' || r24 === 'Missed a gain' ? 'bad' : 'neutral';
+        var win = d.window24hNote ? '<div class="dim" style="font-size:11px;margin-top:2px" title="' + esc(d.window24hNote) + '">window approximate</div>'
+          : (typeof d.windowHours === 'number' ? '<div class="dim" style="font-size:11px;margin-top:2px">' + d.windowHours + ' h window</div>' : '');
+        c24 = '<td><span class="mono">' + money(d.entryPrice) + ' → ' + money(d.nextEntryPrice) + '</span> <span class="mono ' + moveCls(d.move24hPct) + '">' + pct(d.move24hPct, true) + '</span>' +
+          '<div class="' + k24 + '">' + esc(r24) + ' <span class="dim">· ' + esc(d.note24h || '') + '</span></div>' + win + '</td>';
+      } else {
+        c24 = '<td class="dim">Pending<div style="font-size:11px;margin-top:2px">scored at the next morning&rsquo;s entry</div></td>';
+      }
+
+      var res = d.result || '—';
+      var cls = res === 'Win' || res === 'Correct' ? 'good' : res === 'Loss' ? 'bad' : 'neutral';
+      var cs = '<td><span class="mono">' + money(d.entryPrice) + ' → ' + money(d.exitPrice) + '</span> <span class="mono ' + moveCls(d.changePct) + '">' + pct(d.changePct, true) + '</span>' +
+        '<div class="' + cls + '">' + esc(res) + ' <span class="dim">· ' + esc((d.note || '').replace(/^SOL moved /, 'SOL ')) + '</span></div></td>';
+
+      return '<tr>' + day + '<td>' + tag(d.action) + '</td><td class="num mono">' + conf + '</td>' + c24 + cs + '</tr>';
     }).join('');
 
     chart(days);
