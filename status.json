@@ -1,8 +1,8 @@
 {
-  "date": "2026-09-29",
-  "prices": "Entry $119.40 → Close $118.78",
+  "date": "2026-09-30",
+  "prices": "Entry $121.37 → Close $117.42",
   "decision": "HOLD",
-  "confidence": "",
+  "confidence": "53% confidence",
   "result": "Correct",
-  "note": "Avoided −0.52% loss"
+  "note": "Avoided −3.25% loss"
 }
