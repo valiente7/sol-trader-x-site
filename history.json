@@ -1,0 +1,18 @@
+[
+  {
+    "date": "2026-09-29",
+    "entryPrice": 119.4,
+    "exitPrice": 118.78,
+    "changePct": -0.52,
+    "action": "hold",
+    "confidence": null,
+    "probabilities": null,
+    "result": "Correct",
+    "note": "Avoided −0.52% loss",
+    "pnlPct": 0,
+    "contextUsed": false,
+    "indicators": null,
+    "priceSource": null,
+    "legacy": true
+  }
+]
