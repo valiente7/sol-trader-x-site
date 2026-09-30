@@ -48,10 +48,14 @@ h1{font-size:clamp(32px,4.4vw,52px);font-weight:800;letter-spacing:-.02em;line-h
 .chart svg{width:100%;height:auto;display:block}
 .legend{display:flex;gap:20px;flex-wrap:wrap;padding:0 24px 16px;font-size:12px;color:var(--muted)}
 .scroll{overflow-x:auto}
-table{width:100%;border-collapse:collapse;font-size:14px;min-width:880px}
+table{width:100%;border-collapse:collapse;font-size:14px;min-width:640px}
 th .sub{display:block;text-transform:none;letter-spacing:0;font-size:11px;color:var(--dim);margin-top:3px}
-th{text-align:left;font-weight:400;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);padding:14px 24px;border-bottom:1px solid var(--line);white-space:nowrap}
-td{padding:14px 24px;border-bottom:1px solid #182436;white-space:nowrap;color:var(--text)}
+th{text-align:left;font-weight:400;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);padding:14px 14px;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:14px 14px;border-bottom:1px solid #182436;white-space:normal;color:var(--text);vertical-align:top}
+td span.mono,td .tag{white-space:nowrap}
+th .sub{white-space:normal}
+th:first-child,td:first-child{padding-left:24px}
+th:last-child,td:last-child{padding-right:24px}
 tr:last-child td{border-bottom:none}
 td.num{text-align:right}th.num{text-align:right}
 .tag{display:inline-block;padding:3px 10px;border-radius:999px;font-size:12px;border:1px solid var(--line)}
@@ -149,7 +153,7 @@ footer .dim{font-size:12px}
       var decided = isPending && hm(d.decidedAt) ? '<div class="dim" style="font-size:11px;margin-top:2px" title="The decision was published before the close (UTC)">decided ' + hm(d.decidedAt) + ' UTC, before the close</div>' : '';
       var fp = d.jevResponseSha256 ? '<div class="dim" style="font-size:11px;margin-top:2px" title="Jev model ' + esc(d.jevModel || '') + '. SHA-256 of Jev&rsquo;s raw answer: ' + esc(d.jevResponseSha256) + '">' + esc(d.jevModel || 'jev') + ' \u00b7 #' + esc(d.jevResponseSha256.slice(0, 8)) + '</div>' : '';
       var prov = d.provenanceNote ? '<div class="dim" style="font-size:11px;margin-top:2px">' + esc(d.provenanceNote) + '</div>' : '';
-      var day = '<td class="mono">' + esc(d.date) + legacy + (isPending ? decided : times(d)) + (d.legacy && !d.priceSource ? '<div class="dim" style="font-size:11px;margin-top:2px">price source not recorded</div>' : '') + prov + '</td>';
+      var day = '<td class="mono"><span style="white-space:nowrap">' + esc(d.date) + '</span>' + legacy + (isPending ? decided : times(d)) + (d.legacy && !d.priceSource ? '<div class="dim" style="font-size:11px;margin-top:2px">price source not recorded</div>' : '') + prov + '</td>';
 
       if (isPending) {
         return '<tr>' + day + '<td>' + tag(d.action) + '</td><td class="num mono">' + conf + fp + '</td>' +
