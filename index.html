@@ -52,6 +52,7 @@ h1 em{font-style:normal;background:linear-gradient(90deg,var(--green),var(--viol
 .card-head{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:18px 24px;border-bottom:1px solid var(--line)}
 .card-head b{font-weight:400;font-size:13px;letter-spacing:.14em;text-transform:uppercase}
 .card-head span{font-size:12px;color:var(--dim)}
+.card-head span b{font-weight:400;color:var(--muted)}
 .metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:1px;background:var(--line)}
 .metric{padding:28px 24px;background:var(--panel);display:flex;flex-direction:column;gap:10px}
 .metric .k{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
@@ -111,7 +112,7 @@ footer .wrap{padding-top:40px;padding-bottom:40px;display:flex;justify-content:s
 
 <section id="status" class="wrap">
   <div class="card mono">
-    <div class="card-head"><b>Live trading status</b><span>SOL / USDT · scored at close</span></div>
+    <div class="card-head"><b>Live trading status</b><span>SOL / USDT · scored at close · as of <b data-f="date">2026-09-29</b></span></div>
     <div class="metrics" id="metrics">
       <div class="metric"><div class="k">Last decision</div><div class="v" data-f="date">2026-09-29</div><div class="s" data-f="prices">Entry $119.40 → Close $118.78</div></div>
       <div class="metric"><div class="k">Decision</div><div class="v" style="color:var(--violet)" data-f="decision">HOLD</div><div class="s" data-f="confidence">65% confidence</div></div>
@@ -171,7 +172,7 @@ footer .wrap{padding-top:40px;padding-bottom:40px;display:flex;justify-content:s
    Keys: date, prices, decision, confidence, result, note. If missing, the built-in values stay. */
 fetch('status.json',{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(d){
   if(!d)return;
-  document.querySelectorAll('#metrics [data-f]').forEach(function(el){if(d[el.dataset.f]!=null)el.textContent=d[el.dataset.f]});
+  document.querySelectorAll('[data-f]').forEach(function(el){if(d[el.dataset.f]!=null)el.textContent=d[el.dataset.f]});
 }).catch(function(){});
 </script>
 </body>
