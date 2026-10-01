@@ -228,8 +228,8 @@ footer .dim{font-size:12px}
       stat('Trades taken', trades.length, trades.length ? wins + ' win' + (wins === 1 ? '' : 's') + ', ' + (trades.length - wins) + ' loss' + (trades.length - wins === 1 ? '' : 'es') : 'Jev has held every day so far') +
       stat('Paper P&amp;L', trades24.length ? pct(pnl24, true) : (trades.length ? pct(pnl, true) : '0.00%'),
         trades.length ? '24-hour trades, before fees<br>same-day: ' + pct(pnl, true) : 'no trades taken yet', (trades24.length ? pnl24 : pnl) > 0 ? 'good' : (trades24.length ? pnl24 : pnl) < 0 ? 'bad' : '') +
-      stat('SOL, buy and hold', pct(bhMain, true),
-        (chain != null ? 'first entry to latest scored entry (24-hour windows)<br>to the latest close: ' : 'first entry to latest close<br>') + (chain != null ? pct(bh, true) + ' · ' : '') + 'sessions only: ' + pct(moves, true), bhMain > 0 ? 'good' : bhMain < 0 ? 'bad' : '') +
+      stat('If you had bought SOL and held', pct(bhMain, true),
+        (chain != null ? 'Bought at the first entry, held to the latest morning entry.<br>Held to the latest close instead: ' + pct(bh, true) + ' · daytime sessions only: ' : 'Bought at the first entry, held to the latest close.<br>Daytime sessions only: ') + pct(moves, true), bhMain > 0 ? 'good' : bhMain < 0 ? 'bad' : '') +
       stat('Average confidence', confs.length ? Math.round(sum(confs) / confs.length * 100) + '%' : '—',
         confs.length ? 'from Jev, over ' + confs.length + ' day' + (confs.length === 1 ? '' : 's') + (typeof last.confidence === 'number' ? '<br>latest day (' + esc(last.date) + '): <b style="color:var(--text)">' + Math.round(last.confidence * 100) + '%</b>' : '') : 'not recorded yet');
 
