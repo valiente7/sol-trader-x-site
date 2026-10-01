@@ -11,7 +11,7 @@ This public repo holds the Sol-Trader-X website and live track record: one AI de
 | Path | Purpose |
 |---|---|
 | `index.html` | The landing page (HTML and CSS, no build step). |
-| `track-record.html` | The track record page: every day's decision and its scored results. |
+| `track-record.html` | The track record page: renders every day's decision and scored result from `history.json`. |
 | `history.json` | The track record data, one row per day. |
 | `status.json` | The latest result shown on the landing page. |
 | `assets/` | Logo. |
