@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-Y0sLjqrPUjY1xqN4PLm3fiOwYy/q0mEP5Nra+PNKx/A='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-Y0sLjqrPUjY1xqN4PLm3fiOwYy/q0mEP5Nra+PNKx/A='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
 <title>Track record — Sol-Trader-X</title>
 <meta name="description" content="Every daily decision by the Sol-Trader-X paper-trading pilot, scored against actual SOL prices. Earlier days are never changed or removed.">
 <link rel="canonical" href="https://sol-trader-x.com/track-record.html">
@@ -23,9 +23,19 @@
 <meta name="twitter:image:alt" content="Sol-Trader-X: AI trading proving itself in public">
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebPage", "@id": "https://sol-trader-x.com/track-record.html#page", "url": "https://sol-trader-x.com/track-record.html", "name": "Track record — Sol-Trader-X", "isPartOf": {"@id": "https://sol-trader-x.com/#website"}, "about": {"@id": "https://sol-trader-x.com/track-record.html#data"}}, {"@type": "Dataset", "@id": "https://sol-trader-x.com/track-record.html#data", "name": "Sol-Trader-X daily paper-trading record", "description": "One row per day: the AI decision (buy, sell or hold) on SOL/USDT, Jev's confidence, entry and exit prices, and the 24-hour and same-day scored results. Paper trading only; no real trades.", "url": "https://sol-trader-x.com/track-record.html", "license": "https://creativecommons.org/licenses/by/4.0/", "isAccessibleForFree": true, "creator": {"@type": "Organization", "name": "Sol-Trader-X", "url": "https://sol-trader-x.com/"}, "temporalCoverage": "2026-09-28/..", "distribution": [{"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://sol-trader-x.com/history.json"}]}]}</script>
 <link rel="icon" type="image/png" href="assets/favicon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="preload" href="assets/fonts/sora-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
 <style>
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:400;font-display:swap;src:url('assets/fonts/jetbrains-mono-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:500;font-display:swap;src:url('assets/fonts/jetbrains-mono-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:700;font-display:swap;src:url('assets/fonts/jetbrains-mono-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Sora';font-style:normal;font-weight:400;font-display:swap;src:url('assets/fonts/sora-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Sora';font-style:normal;font-weight:600;font-display:swap;src:url('assets/fonts/sora-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Sora';font-style:normal;font-weight:700;font-display:swap;src:url('assets/fonts/sora-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Sora';font-style:normal;font-weight:800;font-display:swap;src:url('assets/fonts/sora-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+a:focus-visible,button:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--green);outline-offset:4px;border-radius:4px}
+.skip-link{position:absolute;left:16px;top:-80px;z-index:100;background:var(--green);color:#0b121c;font-weight:700;padding:10px 16px;border-radius:8px;text-decoration:none}
+.skip-link:focus{top:12px;color:#0b121c;outline:3px solid #fff;outline-offset:2px}
 *{margin:0;padding:0;box-sizing:border-box}
 :root{--bg:#0b121c;--panel:#111b28;--line:#1f2d40;--text:#e3e8ee;--muted:#a9b6c4;--dim:#7f8ea0;--green:#3ff0a4;--violet:#a47bff;--blue:#2aa8ff;--red:#ff6b7a}
 html{scroll-behavior:smooth}
@@ -96,6 +106,7 @@ footer .dim{font-size:12px}
 </style>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to main content</a>
 <div class="page">
 <header>
   <div class="wrap">
@@ -109,7 +120,7 @@ footer .dim{font-size:12px}
   </div>
 </header>
 
-<main class="wrap">
+<main class="wrap" id="main" tabindex="-1">
   <section>
     <div class="eyebrow mono">Paper-trading pilot</div>
     <h1>Every day, on the record.</h1>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-NHFA6RwFFPR/u4D8qEV0ov1V9PfFcc3yJgstz1Shl/4='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-NHFA6RwFFPR/u4D8qEV0ov1V9PfFcc3yJgstz1Shl/4='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
 <title>Sol-Trader-X — AI Trading for Solana</title>
 <meta name="description" content="One live Solana decision daily. Timestamped. Real market data. Preserved publicly. Live paper trading.">
 <link rel="canonical" href="https://sol-trader-x.com/">
@@ -23,9 +23,19 @@
 <meta name="twitter:image:alt" content="Sol-Trader-X: AI trading proving itself in public">
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://sol-trader-x.com/#website", "url": "https://sol-trader-x.com/", "name": "Sol-Trader-X", "description": "One live Solana decision daily. Timestamped. Real market data. Preserved publicly. Live paper trading.", "inLanguage": "en", "publisher": {"@id": "https://sol-trader-x.com/#org"}}, {"@type": "Organization", "@id": "https://sol-trader-x.com/#org", "name": "Sol-Trader-X", "url": "https://sol-trader-x.com/", "logo": "https://sol-trader-x.com/assets/sol-trader-x-logo-1024.webp", "sameAs": ["https://github.com/valiente7/sol-trader-x-site"]}]}</script>
 <link rel="icon" type="image/png" href="assets/favicon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="preload" href="assets/fonts/sora-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
 <style>
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:400;font-display:swap;src:url('assets/fonts/jetbrains-mono-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:500;font-display:swap;src:url('assets/fonts/jetbrains-mono-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:700;font-display:swap;src:url('assets/fonts/jetbrains-mono-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Sora';font-style:normal;font-weight:400;font-display:swap;src:url('assets/fonts/sora-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Sora';font-style:normal;font-weight:600;font-display:swap;src:url('assets/fonts/sora-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Sora';font-style:normal;font-weight:700;font-display:swap;src:url('assets/fonts/sora-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Sora';font-style:normal;font-weight:800;font-display:swap;src:url('assets/fonts/sora-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+a:focus-visible,button:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--green);outline-offset:4px;border-radius:4px}
+.skip-link{position:absolute;left:16px;top:-80px;z-index:100;background:var(--green);color:#0b121c;font-weight:700;padding:10px 16px;border-radius:8px;text-decoration:none}
+.skip-link:focus{top:12px;color:#0b121c;outline:3px solid #fff;outline-offset:2px}
 *{margin:0;padding:0;box-sizing:border-box}
 :root{--bg:#0b121c;--panel:#111b28;--line:#1f2d40;--text:#e3e8ee;--muted:#a9b6c4;--dim:#7f8ea0;--green:#3ff0a4;--violet:#a47bff;--blue:#2aa8ff}
 html{scroll-behavior:smooth}
@@ -101,6 +111,7 @@ footer .wrap{padding-top:40px;padding-bottom:40px;display:flex;justify-content:s
 </style>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to main content</a>
 <div class="page">
 
 <header>
@@ -115,7 +126,7 @@ footer .wrap{padding-top:40px;padding-bottom:40px;display:flex;justify-content:s
   </div>
 </header>
 
-<main>
+<main id="main" tabindex="-1">
 <section id="top" class="wrap hero">
   <div class="hero-copy">
     <div class="live mono"><div class="dot"></div><span>Live testing operational</span></div>
