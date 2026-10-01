@@ -73,5 +73,29 @@
     "priceSource": "kraken",
     "decidedAt": "2026-09-30T12:35:47.781Z",
     "scoredAt": "2026-09-30T20:03:53.549Z"
+  },
+  {
+    "date": "2026-10-01",
+    "entryPrice": 117.74,
+    "action": "hold",
+    "confidence": 0.45,
+    "probabilities": {
+      "hold": 0.64,
+      "sell": 0,
+      "buy": 0.36
+    },
+    "contextUsed": true,
+    "indicators": {
+      "change7dPct": 0.61,
+      "change30dPct": 17.75,
+      "sma20": 112.24,
+      "sma50": 102.06,
+      "rsi14": 61.1,
+      "volVs30dPct": -6.7
+    },
+    "priceSource": "kraken",
+    "decidedAt": "2026-10-01T12:40:09.571Z",
+    "jevModel": "jev-1.13.0",
+    "jevResponseSha256": "02617bdd5a21187c87d75bd98eafd733115283664f0ce0350bc4f462eac32942"
   }
 ]
