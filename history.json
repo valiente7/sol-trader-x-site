@@ -72,7 +72,14 @@
     },
     "priceSource": "kraken",
     "decidedAt": "2026-09-30T12:35:47.781Z",
-    "scoredAt": "2026-09-30T20:03:53.549Z"
+    "scoredAt": "2026-09-30T20:03:53.549Z",
+    "nextEntryDate": "2026-10-01",
+    "nextEntryPrice": 117.74,
+    "move24hPct": -2.99,
+    "result24h": "Avoided a loss",
+    "note24h": "price fell 2.99%",
+    "scored24hAt": "2026-10-01T12:40:09.571Z",
+    "windowHours": 24.1
   },
   {
     "date": "2026-10-01",
