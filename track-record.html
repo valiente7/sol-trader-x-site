@@ -137,6 +137,8 @@ footer .dim{font-size:12px}
   function el(id) { return document.getElementById(id); }
   function money(n) { return '$' + Number(n).toFixed(2); }
   function pct(n, plus) { if (n == null || isNaN(n)) return '—'; var v = Number(n); return (v < 0 ? MINUS : (plus ? '+' : '')) + Math.abs(v).toFixed(2) + '%'; }
+  function dshort(iso) { var m = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']; return m[+iso.slice(5, 7) - 1] + ' ' + (+iso.slice(8, 10)); }
+  function nextDay(iso) { var d = new Date(iso + 'T00:00:00Z'); d.setUTCDate(d.getUTCDate() + 1); return d.toISOString().slice(0, 10); }
   function sum(a) { return a.reduce(function (s, x) { return s + x; }, 0); }
   function tag(a) { a = String(a || '').toLowerCase(); return '<span class="tag ' + a + '">' + a.toUpperCase() + '</span>'; }
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
@@ -236,7 +238,7 @@ footer .dim{font-size:12px}
       stat('Paper P&amp;L', trades24.length ? pct(pnl24, true) : (trades.length ? pct(pnl, true) : '0.00%'),
         trades.length ? '24-hour trades, before fees<br>same-day: ' + pct(pnl, true) : 'no trades taken yet', (trades24.length ? pnl24 : pnl) > 0 ? 'good' : (trades24.length ? pnl24 : pnl) < 0 ? 'bad' : '') +
       stat('If you had bought SOL and held', pct(bhMain, true),
-        (chain != null ? 'First entry to latest morning entry<br>To latest close: ' + pct(bh, true) + '<br>Daytime only: ' : 'First entry to latest close<br>Daytime only: ') + pct(moves, true), bhMain > 0 ? 'good' : bhMain < 0 ? 'bad' : '');
+        (chain != null ? 'Bought ' + dshort(days[0].date) + '<br>To ' + dshort(nextDay(scored[scored.length - 1].date)) + ' morning: ' + pct(chain, true) + '<br>To ' + dshort(last.date) + ' close: ' + pct(bh, true) + '<br>Daytime sessions only: ' : 'Bought ' + dshort(days[0].date) + '<br>To ' + dshort(last.date) + ' close: ' + pct(bh, true) + '<br>Daytime sessions only: ') + pct(moves, true), bhMain > 0 ? 'good' : bhMain < 0 ? 'bad' : '');
 
     el('rows').innerHTML = rowsHtml(all);
 
