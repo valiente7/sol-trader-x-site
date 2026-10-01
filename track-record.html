@@ -237,8 +237,8 @@ footer .dim{font-size:12px}
       stat('Trades taken', trades.length, trades.length ? wins + ' win' + (wins === 1 ? '' : 's') + ', ' + (trades.length - wins) + ' loss' + (trades.length - wins === 1 ? '' : 'es') : 'Jev has held every day so far') +
       stat('Paper P&amp;L', trades24.length ? pct(pnl24, true) : (trades.length ? pct(pnl, true) : '0.00%'),
         trades.length ? '24-hour trades, before fees<br>same-day: ' + pct(pnl, true) : 'no trades taken yet', (trades24.length ? pnl24 : pnl) > 0 ? 'good' : (trades24.length ? pnl24 : pnl) < 0 ? 'bad' : '') +
-      stat('If you had bought SOL and held', pct(bhMain, true),
-        (chain != null ? 'Bought ' + dshort(days[0].date) + '<br>To ' + dshort(nextDay(scored[scored.length - 1].date)) + ' morning: ' + pct(chain, true) + '<br>To ' + dshort(last.date) + ' close: ' + pct(bh, true) + '<br>Daytime sessions only: ' : 'Bought ' + dshort(days[0].date) + '<br>To ' + dshort(last.date) + ' close: ' + pct(bh, true) + '<br>Daytime sessions only: ') + pct(moves, true), bhMain > 0 ? 'good' : bhMain < 0 ? 'bad' : '');
+      stat('If you had bought SOL on ' + dshort(days[0].date) + ' and held', pct(bhMain, true),
+        (chain != null ? 'To ' + dshort(nextDay(scored[scored.length - 1].date)) + ' morning: ' + pct(chain, true) + '<br>To ' + dshort(last.date) + ' close: ' + pct(bh, true) + '<br>Daytime sessions only: ' : 'To ' + dshort(last.date) + ' close: ' + pct(bh, true) + '<br>Daytime sessions only: ') + pct(moves, true), bhMain > 0 ? 'good' : bhMain < 0 ? 'bad' : '');
 
     el('rows').innerHTML = rowsHtml(all);
 
