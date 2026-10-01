@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sol-trader-x.com/sitemap.xml
