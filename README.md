@@ -73,16 +73,9 @@ The market context for `v3-full` (context version `c2-vol-range`) is:
 
 Jev's API returns structured output: its choice, a confidence and the BUY, SELL and HOLD probabilities. It does not return a written rationale, so none is published.
 
-## What testing has shown so far
+## Internal research
 
-These are retrospective tests on 90 days of past prices, run by the project. They are not the live record, and they are not proof of anything.
-
-- Prompt wording changes Jev's behavior a great deal. Across the wordings tested, Jev traded on anywhere from about 10% to 81% of days.
-- Under the most explicit and neutral wording (`v3-full`), Jev was highly selective: **9 BUY, 0 SELL, 81 HOLD** over the 90 days. The 9 directional trades did not demonstrate a statistically meaningful edge.
-- Adding more market context made Jev more cautious, not more aggressive.
-- No tested configuration showed a measurable trading edge.
-
-Caveats: Jev may have seen this price history in training, which can flatter backtests; the entry price is approximated; fees and slippage are not included; and the number of trades is small.
+The project runs its own retrospective experiments on prompt wording and market context. They are research, not the live record, and their data is kept in the private repository. What is public is the live track record.
 
 ## HOLD is a decision
 
@@ -99,8 +92,8 @@ The decision is published before the evaluation period ends. A pending row can e
 ```
 SOL
 Decision: BUY
-Entry: $118.48
-Decided: 2026-10-03T07:21:44.512Z
+Entry: $[price]
+Decided: [ISO-8601 UTC timestamp, millisecond precision]
 Status: PENDING
 ```
 
