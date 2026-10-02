@@ -1,8 +1,8 @@
 {
-  "date": "2026-10-01",
-  "prices": "Entry $117.74 → Close $118.21",
+  "date": "2026-10-02",
+  "prices": "Entry $122.00 → Close $118.19",
   "decision": "HOLD",
-  "confidence": "45% confidence",
-  "result": "No trade",
-  "note": "SOL moved +0.40% on the day"
+  "confidence": "66% confidence",
+  "result": "Correct",
+  "note": "Avoided −3.12% loss"
 }
