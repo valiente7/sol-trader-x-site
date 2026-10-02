@@ -109,7 +109,14 @@
     "decidedAt": "2026-10-01T12:40:09.571Z",
     "jevModel": "jev-1.13.0",
     "jevResponseSha256": "02617bdd5a21187c87d75bd98eafd733115283664f0ce0350bc4f462eac32942",
-    "scoredAt": "2026-10-01T23:03:02.524Z"
+    "scoredAt": "2026-10-01T23:03:02.524Z",
+    "nextEntryDate": "2026-10-02",
+    "nextEntryPrice": 122,
+    "move24hPct": 3.62,
+    "result24h": "Missed a gain",
+    "note24h": "price rose 3.62%",
+    "scored24hAt": "2026-10-02T08:15:25.843Z",
+    "windowHours": 19.6
   },
   {
     "date": "2026-10-02",
