@@ -121,6 +121,8 @@
   {
     "date": "2026-10-02",
     "entryPrice": 122,
+    "exitPrice": 118.19,
+    "changePct": -3.12,
     "action": "hold",
     "confidence": 0.66,
     "probabilities": {
@@ -128,6 +130,9 @@
       "buy": 0.15,
       "sell": 0.08
     },
+    "result": "Correct",
+    "note": "Avoided −3.12% loss",
+    "pnlPct": 0,
     "contextUsed": true,
     "indicators": {
       "change7dPct": -0.04,
@@ -140,6 +145,10 @@
     "priceSource": "kraken",
     "decidedAt": "2026-10-02T08:15:25.843Z",
     "jevModel": "jev-1.13.0",
-    "jevResponseSha256": "442a9b0035dab2216fb798f1669da4d5ecbd8ac34ed4c3561c4709cf461c18d2"
+    "jevResponseSha256": "442a9b0035dab2216fb798f1669da4d5ecbd8ac34ed4c3561c4709cf461c18d2",
+    "promptVersion": null,
+    "contextVersion": null,
+    "experimentSha256": null,
+    "scoredAt": "2026-10-02T20:30:27.765Z"
   }
 ]
