@@ -187,6 +187,7 @@
     "jevResponseSha256": "3a7e3a09545a4b4343d24488874cc6a3bab72477a366f6a04cad2d2919928c06",
     "promptVersion": "v3-full",
     "contextVersion": "c2-vol-range",
-    "experimentSha256": "1351d66d81c0b5d50890642418e02e2c8eabd1a32fb79e6375dc78a864cda174"
+    "experimentSha256": "1351d66d81c0b5d50890642418e02e2c8eabd1a32fb79e6375dc78a864cda174",
+    "provenanceNote": "Data error: the market indicators supplied to Jev for this decision (and published in this row) were built from daily candles through 2026-10-01 instead of 2026-10-02, because of a software error in our pipeline, fixed on 2026-10-03. The entry price, the prompt and Jev's answer are as recorded."
   }
 ]
