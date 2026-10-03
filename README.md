@@ -119,7 +119,7 @@ Live market data comes from **Kraken**, with **OKX** as a backup. A published ma
 
 ## What is published for each decision
 
-Each row in `history.json` can include: the date and decision time (millisecond UTC), the action, Jev's confidence and its BUY/SELL/HOLD probabilities, the entry price and price source, the market indicators supplied to Jev, the model version, the response fingerprint, and (once scored) the exit price, the same-day and 24-hour results and the scoring time.
+Each row in `history.json` can include: the date and decision time (millisecond UTC), the action, Jev's confidence and its BUY/SELL/HOLD probabilities, the entry price and price source, the market indicators supplied to Jev, the model version, the response fingerprint, and (once scored) the evening checkpoint price, the 24-hour and evening-checkpoint results and the scoring time.
 
 From 2026-10-03, rows also carry `promptVersion`, `contextVersion` and `experimentSha256`, a hash of the whole decision environment (prompt text, question, options, context fields and scoring rules). Rows before that date predate this versioning.
 

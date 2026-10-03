@@ -143,12 +143,12 @@ footer .wrap{padding-top:40px;padding-bottom:40px;display:flex;justify-content:s
 
 <section id="status" class="wrap">
   <div class="card mono">
-    <div class="card-head"><b>Live trading status</b><span><a href="track-record.html">Full history →</a> · SOL / USDT · scored at close · as of <span class="asof" data-f="date">2026-09-29</span></span></div>
+    <div class="card-head"><b>Live trading status</b><span><a href="track-record.html">Full history →</a> · SOL / USDT · evening checkpoint · as of <span class="asof" data-f="date">2026-09-29</span></span></div>
     <div class="metrics" id="metrics">
-      <div class="metric"><div class="k">Last decision</div><div class="v" data-f="date">2026-09-29</div><div class="s" data-f="prices">Entry $119.40 → Close $118.78</div></div>
+      <div class="metric"><div class="k">Last decision</div><div class="v" data-f="date">2026-09-29</div><div class="s" data-f="prices">Entry $119.40 → Evening checkpoint $118.78</div></div>
       <div class="metric"><div class="k">Decision</div><div class="v" style="color:var(--violet)" data-f="decision">HOLD</div><div class="s" data-f="confidence"></div></div>
       <div class="metric"><div class="k">Result</div><div class="v" style="color:var(--green)" data-f="result">Correct</div><div class="s" data-f="note">Avoided −0.52% loss</div></div>
-      <div class="metric"><div class="k">Test frequency</div><div class="v" style="color:var(--blue)">Daily</div><div class="s">8 AM &amp; 8 PM UTC</div></div>
+      <div class="metric"><div class="k">Test frequency</div><div class="v" style="color:var(--blue)">Daily</div><div class="s">Decision 07:30 UTC · checkpoint 19:45 UTC</div></div>
     </div>
   </div>
 </section>
@@ -159,8 +159,8 @@ footer .wrap{padding-top:40px;padding-bottom:40px;display:flex;justify-content:s
     <h2>Built to be verified, not trusted.</h2>
   </div>
   <div class="grid">
-    <div class="feature"><div class="n mono">01</div><h3>Real data</h3><p>Tests on live Kraken and OKX prices, not simulations. Each day's decision is recorded in the morning and scored in the evening (UTC).</p></div>
-    <div class="feature"><div class="n mono">02</div><h3>Auditable</h3><p>Every decision is logged with a millisecond UTC timestamp, recorded first and then scored against actual market prices that evening. The times are listed on the track record.</p></div>
+    <div class="feature"><div class="n mono">01</div><h3>Real data</h3><p>Tests on live Kraken and OKX prices, not simulations. Each day's decision is recorded in the morning and scored over the following 24 hours, with an evening checkpoint (UTC).</p></div>
+    <div class="feature"><div class="n mono">02</div><h3>Auditable</h3><p>Every decision is logged with a millisecond UTC timestamp, recorded first and then scored against actual market prices. The times are listed on the track record.</p></div>
     <div class="feature"><div class="n mono">03</div><h3>Planned to Scale</h3><p>Risk-gate and position-sizing code is early-stage and not used by the live pilot. Jito execution is planned, not built. The pilot is paper trading only: no real capital is deployed.</p></div>
     <div class="feature"><div class="n mono">04</div><h3>Transparent</h3><p>Every prediction is logged and scored against actual prices, and results are reported as they happened. No cherry-picking. No black magic.</p></div>
     <div class="feature"><div class="n mono">05</div><h3>Traceable</h3><p>Every decision is timestamped and logged, so results can be reviewed after the fact. A research pilot, not investment advice.</p></div>

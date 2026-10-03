@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-Y0sLjqrPUjY1xqN4PLm3fiOwYy/q0mEP5Nra+PNKx/A='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-rOLAhtxZmb4GQsJcgt7ksbdNKv0vuWMhaocDGUH5yHY='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
 <title>Track record — Sol-Trader-X</title>
 <meta name="description" content="Every daily decision by the Sol-Trader-X paper-trading pilot, scored against actual SOL prices. Earlier days are never changed or removed.">
 <link rel="canonical" href="https://sol-trader-x.com/track-record.html">
@@ -124,14 +124,14 @@ footer .dim{font-size:12px}
   <section>
     <div class="eyebrow mono">Paper-trading pilot</div>
     <h1>Every day, on the record.</h1>
-    <p class="lede">Each row is one day's decision by Jev, recorded in the morning and scored two ways: over 24 hours, against the next morning&rsquo;s entry, and within the day, against that evening&rsquo;s close (UTC). Earlier days are never changed or removed, including the ones that didn't go well. A re-run on the same day corrects only that day's row.</p>
+    <p class="lede">Each row is one day's decision by Jev, recorded in the morning and scored over 24 hours, against the next morning&rsquo;s entry. An evening checkpoint (UTC) is also shown for reference. Earlier days are never changed or removed, including the ones that didn't go well. A re-run on the same day corrects only that day's row.</p>
     <p class="asof mono" id="asof" aria-live="polite">Loading the record…</p>
   </section>
 
   <section aria-label="Summary"><div class="stats" id="stats"></div></section>
 
   <section class="panel" id="chartPanel" hidden>
-    <div class="panel-head mono"><b style="font-weight:400">SOL price, entry to close</b><label class="view">View by <select id="viewBy" aria-label="Chart view"><option value="day">Day</option><option value="week">Week</option><option value="month">Month</option><option value="year">Year</option></select></label></div>
+    <div class="panel-head mono"><b style="font-weight:400">SOL price, entry to evening checkpoint</b><label class="view">View by <select id="viewBy" aria-label="Chart view"><option value="day">Day</option><option value="week">Week</option><option value="month">Month</option><option value="year">Year</option></select></label></div>
     <div class="chart" id="chart"></div>
     <div class="legend mono" id="legend"></div>
   </section>
@@ -139,14 +139,14 @@ footer .dim{font-size:12px}
   <section class="panel">
     <div class="panel-head mono"><b style="font-weight:400">Daily log</b><span><a href="history.json">history.json ↗</a> · data <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></span></div>
     <div class="scroll"><table>
-      <thead><tr><th>Date</th><th>Decision</th><th class="num">Confidence</th><th>24-hour result<span class="sub">entry to next morning&rsquo;s entry</span></th><th>Same-day result<span class="sub">entry to that evening&rsquo;s close</span></th></tr></thead>
+      <thead><tr><th>Date</th><th>Decision</th><th class="num">Confidence</th><th>24-hour result<span class="sub">entry to next morning&rsquo;s entry</span></th><th>Evening checkpoint<span class="sub">entry to that evening&rsquo;s price; not the experiment score</span></th></tr></thead>
       <tbody id="rows"></tbody>
     </table></div>
     <div class="empty" id="empty" hidden>The first results will appear here after the next scored day.</div>
   </section>
 
   <section class="note">
-    <p><b>How to read this.</b> Jev is given the price plus the recent trend, moving averages, momentum and volume, and answers buy, sell or hold. Each day is scored two ways. The <b>24-hour result</b> (the first column) compares that morning&rsquo;s entry with the next morning&rsquo;s entry, so the overnight move counts; the newest day stays pending until the next morning. The <b>same-day result</b> compares the entry with that evening&rsquo;s close. For a HOLD, &ldquo;avoided a loss&rdquo; means the price fell and &ldquo;missed a gain&rdquo; means it rose. A buy or sell is scored win or loss on a one-SOL paper position, before fees. Confidence is the number Jev itself returns. The dashed line on the chart marks the move between one evening&rsquo;s close and the next morning&rsquo;s entry. <b>Each morning&rsquo;s decision is published here before the day&rsquo;s close,</b> as a row with no outcome yet. The evening only adds the outcome to that row, the publishing code refuses to change a decision once it is published, and any edit would show in the repository&rsquo;s history, which is protected against rewrites. New decisions also record the Jev model version and a SHA-256 fingerprint of Jev&rsquo;s raw answer (the small text under the confidence), so the private record can be checked against what was published. <b>The question to Jev changed on 2026-10-03.</b> Until 2026-10-02 it was &ldquo;Should we buy, sell, or hold SOL right now?&rdquo; From 2026-10-03 the question states that no position is held and that Jev may go long, go short or stay in cash over the next 24 hours. New rows carry a <span class="mono">promptVersion</span> field in <span class="mono">history.json</span>; earlier rows are unchanged.</p>
+    <p><b>How to read this.</b> Jev is given the price plus the recent trend, moving averages, momentum and volume, and answers buy, sell or hold. Each day is scored over 24 hours. The <b>24-hour result</b> (the first column) compares that morning&rsquo;s entry with the next morning&rsquo;s entry, so the overnight move counts; the newest day stays pending until the next morning. The <b>evening checkpoint</b> compares the entry with a fixed snapshot of the price that evening. Solana trades around the clock, so this is not a market close, and it is not the experiment score: it covers a shorter window than the 24 hours Jev is asked about. For a HOLD, &ldquo;avoided a loss&rdquo; means the price fell and &ldquo;missed a gain&rdquo; means it rose. A buy or sell is scored win or loss on a one-SOL paper position, before fees. Confidence is the number Jev itself returns. The dashed line on the chart marks the move between one evening checkpoint and the next morning&rsquo;s entry. <b>Each morning&rsquo;s decision is published here before the day&rsquo;s close,</b> as a row with no outcome yet. The evening only adds the outcome to that row, the publishing code refuses to change a decision once it is published, and any edit would show in the repository&rsquo;s history, which is protected against rewrites. New decisions also record the Jev model version and a SHA-256 fingerprint of Jev&rsquo;s raw answer (the small text under the confidence), so the private record can be checked against what was published. <b>The question to Jev changed on 2026-10-03.</b> Until 2026-10-02 it was &ldquo;Should we buy, sell, or hold SOL right now?&rdquo; From 2026-10-03 the question states that no position is held and that Jev may go long, go short or stay in cash over the next 24 hours. New rows carry a <span class="mono">promptVersion</span> field in <span class="mono">history.json</span>; earlier rows are unchanged.</p>
     <p style="margin-top:12px"><b>This is a research pilot with paper money, not investment advice.</b> Nothing here is a recommendation, and a short record says little about future results. The first days, marked "pilot start", were recorded before confidence and the price source were stored. Their prices fall within Kraken's real range for those days, but the source can't be confirmed.</p>
   </section>
 </main>
@@ -354,7 +354,7 @@ footer .dim{font-size:12px}
     });
     el('chart').innerHTML = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="SOL entry and closing price, one segment per ' + VIEW + ', coloured by the most common decision">' + g + '</svg>';
     el('legend').innerHTML = '<span><span style="color:#a47bff">●</span> Hold</span><span><span style="color:#3ff0a4">●</span> Buy</span><span><span style="color:#ff6b7a">●</span> Sell</span>' +
-      '<span>One segment per ' + VIEW + (VIEW === 'day' ? '' : ' (first entry to last close, coloured by its most common decision)') + '. Hollow dot = entry, filled dot = close. Dashed line = the move from one close to the next entry, which is not scored.</span>';
+      '<span>One segment per ' + VIEW + (VIEW === 'day' ? '' : ' (first entry to last close, coloured by its most common decision)') + '. Hollow dot = entry, filled dot = evening checkpoint. Dashed line = the move from one checkpoint to the next entry, which is not scored.</span>';
   }
 
   el('viewBy').addEventListener('change', function () {
