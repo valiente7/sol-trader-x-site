@@ -149,7 +149,14 @@
     "promptVersion": null,
     "contextVersion": null,
     "experimentSha256": null,
-    "scoredAt": "2026-10-02T20:30:27.765Z"
+    "scoredAt": "2026-10-02T20:30:27.765Z",
+    "nextEntryDate": "2026-10-03",
+    "nextEntryPrice": 119.4,
+    "move24hPct": -2.13,
+    "result24h": "Avoided a loss",
+    "note24h": "price fell 2.13%",
+    "scored24hAt": "2026-10-03T08:15:21.318Z",
+    "windowHours": 24
   },
   {
     "date": "2026-10-03",
