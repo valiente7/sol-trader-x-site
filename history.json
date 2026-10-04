@@ -196,5 +196,37 @@
     "experimentSha256": "1351d66d81c0b5d50890642418e02e2c8eabd1a32fb79e6375dc78a864cda174",
     "scoredAt": "2026-10-03T19:45:30.196Z",
     "provenanceNote": "Data error: the market indicators supplied to Jev for this decision (and published in this row) were built from daily candles through 2026-10-01 instead of 2026-10-02, because of a software error in our pipeline, fixed on 2026-10-03. The entry price, the prompt and Jev's answer are as recorded."
+  },
+  {
+    "date": "2026-10-04",
+    "entryPrice": 121.14,
+    "action": "hold",
+    "confidence": 0.47,
+    "probabilities": {
+      "sell": 0.2,
+      "hold": 0.65,
+      "buy": 0.15
+    },
+    "contextUsed": true,
+    "indicators": {
+      "change7dPct": -0.7,
+      "change30dPct": 18.87,
+      "sma20": 115.06,
+      "sma50": 104.72,
+      "rsi14": 65.6,
+      "volVs30dPct": -78.3,
+      "vol14dPct": 2.44,
+      "rangePos30dPct": 87,
+      "low30d": 95.8,
+      "high30d": 124.96
+    },
+    "priceSource": "kraken",
+    "decidedAt": "2026-10-04T07:30:23.059Z",
+    "jevModel": "jev-1.13.0",
+    "jevResponseSha256": "1d77d732a43c5338add11401afdbab28cc12215d0516b5cddf8dd9f9356202d4",
+    "promptVersion": "v3-full",
+    "contextAsOf": "2026-10-03",
+    "contextVersion": "c2-vol-range",
+    "experimentSha256": "1351d66d81c0b5d50890642418e02e2c8eabd1a32fb79e6375dc78a864cda174"
   }
 ]
