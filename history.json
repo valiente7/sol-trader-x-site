@@ -292,7 +292,7 @@
     "result": "Correct",
     "note": "Avoided −1.25% loss",
     "pnlPct": 0,
-    "scoredAt": "2026-10-06T17:20:48.960Z",
+    "scoredAt": "2026-10-05T19:45:00.000Z",
     "provenanceNote": "The evening checkpoint for 2026-10-05 could not run: a GitHub Actions outage left the 19:45 UTC job without a runner. It was added on 2026-10-06 from the public Kraken SOL/USDT 5-minute candle opening at 19:45 UTC. The decision and 24-hour result are unaffected."
   },
   {
