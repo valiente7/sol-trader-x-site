@@ -703,6 +703,8 @@
   {
     "date": "2026-10-15",
     "entryPrice": 102.3,
+    "exitPrice": 105.95,
+    "changePct": 3.57,
     "action": "hold",
     "confidence": 0.22,
     "probabilities": {
@@ -710,6 +712,9 @@
       "sell": 0.24,
       "hold": 0.48
     },
+    "result": "No trade",
+    "note": "SOL moved +3.57% on the day",
+    "pnlPct": 0,
     "contextUsed": true,
     "indicators": {
       "change7dPct": -6.64,
@@ -730,6 +735,7 @@
     "promptVersion": "v3-full",
     "contextAsOf": "2026-10-14",
     "contextVersion": "c2-vol-range",
-    "experimentSha256": "1351d66d81c0b5d50890642418e02e2c8eabd1a32fb79e6375dc78a864cda174"
+    "experimentSha256": "1351d66d81c0b5d50890642418e02e2c8eabd1a32fb79e6375dc78a864cda174",
+    "scoredAt": "2026-10-15T19:45:32.560Z"
   }
 ]
