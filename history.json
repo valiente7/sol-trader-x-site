@@ -748,6 +748,8 @@
   {
     "date": "2026-10-16",
     "entryPrice": 106.39,
+    "exitPrice": 103.07,
+    "changePct": -3.12,
     "action": "hold",
     "confidence": 0.41,
     "probabilities": {
@@ -755,6 +757,9 @@
       "sell": 0.28,
       "hold": 0.61
     },
+    "result": "Correct",
+    "note": "Avoided −3.12% loss",
+    "pnlPct": 0,
     "contextUsed": true,
     "indicators": {
       "change7dPct": -2.58,
@@ -775,6 +780,7 @@
     "promptVersion": "v3-full",
     "contextAsOf": "2026-10-15",
     "contextVersion": "c2-vol-range",
-    "experimentSha256": "1351d66d81c0b5d50890642418e02e2c8eabd1a32fb79e6375dc78a864cda174"
+    "experimentSha256": "1351d66d81c0b5d50890642418e02e2c8eabd1a32fb79e6375dc78a864cda174",
+    "scoredAt": "2026-10-16T19:45:28.900Z"
   }
 ]
