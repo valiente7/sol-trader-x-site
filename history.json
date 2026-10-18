@@ -826,7 +826,14 @@
     "contextAsOf": "2026-10-16",
     "contextVersion": "c2-vol-range",
     "experimentSha256": "1351d66d81c0b5d50890642418e02e2c8eabd1a32fb79e6375dc78a864cda174",
-    "scoredAt": "2026-10-17T19:45:26.083Z"
+    "scoredAt": "2026-10-17T19:45:26.083Z",
+    "nextEntryDate": "2026-10-18",
+    "nextEntryPrice": 103.43,
+    "move24hPct": -1.5,
+    "result24h": "Avoided a loss",
+    "note24h": "price fell 1.50%",
+    "scored24hAt": "2026-10-18T07:30:25.229Z",
+    "windowHours": 24
   },
   {
     "date": "2026-10-18",
