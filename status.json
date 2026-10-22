@@ -1,8 +1,8 @@
 {
-  "date": "2026-10-21",
-  "prices": "Entry $106.73 → Evening checkpoint $108.25",
+  "date": "2026-10-22",
+  "prices": "Entry $104.52 → Evening checkpoint $103.45",
   "decision": "HOLD",
-  "confidence": "45% confidence",
-  "result": "No trade",
-  "note": "SOL moved +1.42% on the day"
+  "confidence": "37% confidence",
+  "result": "Correct",
+  "note": "Avoided −1.02% loss"
 }
