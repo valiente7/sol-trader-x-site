@@ -1,8 +1,8 @@
 {
-  "date": "2026-10-22",
-  "prices": "Entry $104.52 → Evening checkpoint $103.45",
+  "date": "2026-10-23",
+  "prices": "Entry $104.54 → Evening checkpoint $103.77",
   "decision": "HOLD",
-  "confidence": "37% confidence",
+  "confidence": "35% confidence",
   "result": "Correct",
-  "note": "Avoided −1.02% loss"
+  "note": "Avoided −0.74% loss"
 }
