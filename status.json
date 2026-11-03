@@ -1,8 +1,8 @@
 {
-  "date": "2026-11-02",
-  "prices": "Entry $94.22 → Evening checkpoint $91.30",
+  "date": "2026-11-03",
+  "prices": "Entry $91.65 → Evening checkpoint $93.22",
   "decision": "BUY",
-  "confidence": "40% confidence",
-  "result": "Loss",
-  "note": "−3.10% on the position"
+  "confidence": "55% confidence",
+  "result": "Win",
+  "note": "+1.71% on the position"
 }
