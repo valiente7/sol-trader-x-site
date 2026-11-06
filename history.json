@@ -1637,5 +1637,37 @@
     "contextVersion": "c2-vol-range",
     "experimentSha256": "1351d66d81c0b5d50890642418e02e2c8eabd1a32fb79e6375dc78a864cda174",
     "scoredAt": "2026-11-04T19:55:28.024Z"
+  },
+  {
+    "date": "2026-11-06",
+    "entryPrice": 89.57,
+    "action": "buy",
+    "confidence": 0.53,
+    "probabilities": {
+      "buy": 0.69,
+      "sell": 0.05,
+      "hold": 0.26
+    },
+    "contextUsed": true,
+    "indicators": {
+      "change7dPct": -7.01,
+      "change30dPct": -23,
+      "sma20": 98.94,
+      "sma50": 108.23,
+      "rsi14": 29.3,
+      "volVs30dPct": 103.4,
+      "vol14dPct": 2.59,
+      "rangePos30dPct": 4,
+      "low30d": 88.32,
+      "high30d": 120.71
+    },
+    "priceSource": "kraken",
+    "decidedAt": "2026-11-06T08:35:28.301Z",
+    "jevModel": "jev-1.13.0",
+    "jevResponseSha256": "9409ee1f7657351dc1dc960e73819ef6ad8167610e935b812fac9722e81e2c37",
+    "promptVersion": "v3-full",
+    "contextAsOf": "2026-11-05",
+    "contextVersion": "c2-vol-range",
+    "experimentSha256": "1351d66d81c0b5d50890642418e02e2c8eabd1a32fb79e6375dc78a864cda174"
   }
 ]
